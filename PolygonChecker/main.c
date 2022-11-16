@@ -22,6 +22,10 @@ int main() {
 			//printf_s("! %d\n", triangleSidesPtr[0]);
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf_s("%s\n", result);
+
+			//use this function after checking triangle validity!!
+			FindAnglesInTriangleAndPrint((double)triangleSidesPtr[0], (double)triangleSidesPtr[1], (double)triangleSidesPtr[2]);
+
 			break;
 		case 0:
 			continueProgram = false;
