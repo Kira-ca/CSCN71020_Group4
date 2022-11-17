@@ -12,7 +12,7 @@ int main() {
 		printWelcome();
 
 		int shapeChoice = printShapeMenu();
-
+		
 		switch (shapeChoice)
 		{
 		case 1:
@@ -62,3 +62,12 @@ int* getTriangleSides(int* triangleSides) {
 	}
 	return triangleSides;
 }
+
+//char* CheckTriangle (int side1, int side2, int side3) {
+//
+//	char* result = "";
+//	if (side1 <= 0 || side2 <= 0 || side3 <= 0) {
+//		result = "Not a triangle";
+//	}
+//
+//}
