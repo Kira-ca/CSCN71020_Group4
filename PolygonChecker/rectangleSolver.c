@@ -1,16 +1,30 @@
+/* Polygon Checker Group Project - Group 4 */
+// CSCN71020-22F-Sec1 - Fall22 
 
-#include "rectangleSolver.h"
+// rectangleCheck2.0 (2nd Approach)
+/********************************************************************************************************************************************
+* Requirements: 
+	Add a new feature to the application program to accept four points. Each point is an x,y pair. You may ask the user to enter the x and y one at a time, or at once and split the input yourself. There should be some validation on the user input to ensure you are given proper values. Once given the four points, generate four lines and determine if these lines form a rectangle. You may find it useful to re-use your triangle angle code to assist this, but you may use a unique function to determine if the lines make a rectangle. Report the shape's perimeter, and if it is a rectangle also report its area.
+*/
+/********************************************************************************************************************************************
+	*This program use the 2nd approach:
+
+	- The second approach is to write code to determine which "corner" each point is, and then connect the corners to form the shape. Using this approach, no matter the order the points are entered, no lines will cross. This approach is worth extra marks.
+//********************************************************************************************************************************************
+*/
+
+#include "rectangleSolver.h"													// Header file for rectangleSolver Library
 #include <stdio.h>
-#include <stdbool.h>
-#include <math.h>
+#include <stdbool.h>															// Use for boolean data type (true/false)
+#include <math.h>																// Use for sqrt() and pow() methods
 
-
+// A function that get points from userInput and return point of struct (x,y)
 POINT GetRectanglePoints()
 {
-	int pointArrays[2];
-	char pointLetters[2] = { 'x', 'y' };
+	int pointArrays[TWO];
+	char pointLetters[TWO] = { 'x', 'y' };
 
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < TWO; i++)
 	{
 		bool isValidEntry = true;
 		do
@@ -29,10 +43,12 @@ POINT GetRectanglePoints()
 		} while (isValidEntry);
 	}
 
-	POINT assignedPoints = AssignPoints(pointArrays[0], pointArrays[1]);
+	// Assign x and y of each point to the struct of POINT which return back the structure 
+	POINT assignedPoints = AssignPoints(pointArrays[ZERO], pointArrays[ONE]);
 	return assignedPoints;
 }
 
+// A function that assign point x and y to a point struct and return the structure
 POINT AssignPoints(int x, int y)
 {
 	POINT p;
@@ -42,7 +58,7 @@ POINT AssignPoints(int x, int y)
 	return p;
 }
 
-// Owen Implemented FixPointOrder Function
+// Owen wrote FixPointOrder Function
 void FixPointOrder(POINT* array)
 {
 	//declraing temp variables to swap values of points
@@ -50,31 +66,32 @@ void FixPointOrder(POINT* array)
 	int tempy;
 
 	//looping through check 4 times to fully organize points
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < THREE; i++)
 	{
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < THREE; i++)
 		{
 			//swapping point order to the points with the lowest values first
-			if (array[i + 1].x <= array[i].x && array[i + 1].y <= array[i].y)
+			if (array[i + ONE].x <= array[i].x && array[i + ONE].y <= array[i].y)
 			{
 				tempx = array[i].x;
 				tempy = array[i].y;
-				array[i].x = array[i + 1].x;
-				array[i].y = array[i + 1].y;
-				array[i + 1].x = tempx;
-				array[i + 1].y = tempy;
+				array[i].x = array[i + ONE].x;
+				array[i].y = array[i + ONE].y;
+				array[i + ONE].x = tempx;
+				array[i + ONE].y = tempy;
 			}
 		}
 	}
 	//swapping the last 2 points in arrayOfPoints to make the points go in order of drawing the ractangle
-	tempx = array[MAX_POINTS-2].x;
-	tempy = array[MAX_POINTS-2].y;
-	array[MAX_POINTS-2].x = array[MAX_POINTS-1].x;
-	array[MAX_POINTS-2].y = array[MAX_POINTS-1].y;
-	array[MAX_POINTS-1].x = tempx;
-	array[MAX_POINTS-1].y = tempy;
+	tempx = array[MAX_POINTS-TWO].x;
+	tempy = array[MAX_POINTS-TWO].y;
+	array[MAX_POINTS-TWO].x = array[MAX_POINTS-ONE].x;
+	array[MAX_POINTS-TWO].y = array[MAX_POINTS-ONE].y;
+	array[MAX_POINTS-ONE].x = tempx;
+	array[MAX_POINTS-ONE].y = tempy;
 }
 
+// A function that host all the functions for finding rectangle from 4 points
 void RectangleSolver()
 {
 	printf("Please enter 1st point x & y: \n");
@@ -89,58 +106,50 @@ void RectangleSolver()
 	printf("Please enter 4th point x & y: \n");
 	POINT point4 = GetRectanglePoints();
 
+	// Owen Covach wrote line 111 to 121
+	
 	// sort x & y so that user Input order does not matter and still form a rectangle if it is true
 	
-	// Owen Implemented line 91 to 104
-
 	//creating an array of the points for easier checks
 	POINT arrayOfPoints[MAX_POINTS] = { point1, point2, point3, point4 };
 	FixPointOrder(arrayOfPoints);
 
 	//setting actual point variables to new order for program use
-	point1 = arrayOfPoints[0];
-	point2 = arrayOfPoints[1];
-	point3 = arrayOfPoints[2];
-	point4 = arrayOfPoints[3];
+	point1 = arrayOfPoints[ZERO];
+	point2 = arrayOfPoints[ONE];
+	point3 = arrayOfPoints[TWO];
+	point4 = arrayOfPoints[THREE];
 
 
 	// Validate Rectangle Points if repeated on the same point
 
-	if (point1.x != point2.x && point1.y != point2.y ||
-		point1.x != point3.x && point1.y != point3.y ||
-		point1.x != point4.x && point1.y != point4.y ||
-		point2.x != point3.x && point2.y != point3.y ||
-		point2.x != point4.x && point2.y != point4.y ||
-		point3.x != point4.x && point3.y != point4.y)
+	bool isDuplicate = ArePointsDuplicated(point1, point2, point3, point4);
+
+	// If all points are not duplicated then it can proceed to perform calculations
+	if(!isDuplicate)
 	{
-		// Find the length of AB, BC, CD, DA
-		// AB 
-		double ABLength = (sqrt(pow(((double)point2.x - (double)point1.x), 2) + pow(((double)point2.y - (double)point1.y), 2)));
-		printf("AB: %f\n", ABLength);
-		double BCLength = (sqrt(pow(((double)point3.x - (double)point2.x), 2) + pow(((double)point3.y - (double)point2.y), 2)));
-		printf("BC: %f\n", BCLength);
-		double CDLength = (sqrt(pow(((double)point4.x - (double)point3.x), 2) + pow(((double)point4.y - (double)point3.y), 2)));
-		printf("CD: %f\n", CDLength);
-		double DALength = (sqrt(pow(((double)point1.x - (double)point4.x), 2) + pow(((double)point1.y - (double)point4.y), 2)));
-		printf("DA: %f\n", DALength);
+		// Find the length of AB, BC, CD, DA for all 4 points 
+		double ABLength = FindDiagonalOfNonRightTriangle(point1, point2);
 
-		// Find the length of points AC 
-		double ACNonRightDiagonal = (sqrt(pow(((double)point3.x - (double)point1.x), 2) + pow(((double)point3.y - point1.y), 2)));
-		printf("ACNonRight: %lf\n", ACNonRightDiagonal);
+		double BCLength = FindDiagonalOfNonRightTriangle(point2, point3);
+	
+		double CDLength = FindDiagonalOfNonRightTriangle(point3, point4);
 
-		double CANonRightDiagonal = (sqrt(pow(((double)point4.x - (double)point2.x), 2) + pow(((double)point4.y - point2.y), 2)));
-		printf("ACNonRight: %lf\n", CANonRightDiagonal);
+		double DALength = FindDiagonalOfNonRightTriangle(point4, point1);
 
-		// Find the hypothenus of C for right triangle ABC assuming it is a right triangle 
-		double ACRightDiagonal = (sqrt(pow(((double)ABLength), (double)2) + pow(((double)BCLength), (double)2)));
-		printf("ACRight: %lf\n", ACRightDiagonal);
+		// Find the length of points AC and CA for its diagonal
+		double ACNonRightDiagonal = FindDiagonalOfNonRightTriangle(point1, point3);
 
-		double CARightDiagonal = (sqrt(pow(((double)CDLength), (double)2) + pow(((double)DALength), (double)2)));
-		printf("CDRight: %lf\n", CARightDiagonal);
+		double CANonRightDiagonal = FindDiagonalOfNonRightTriangle(point2, point4);
 
+		// Find the hypotenuse for right triangle AC and CA assuming it is a right triangle 
+		double ACRightDiagonal = FindHypotenuseOfRightTriangle(ABLength, BCLength);
 
-		// Compare the length with the hypothenus result
+		double CARightDiagonal = FindHypotenuseOfRightTriangle(CDLength, DALength);
 
+		// Compare the diagonal length with the hypothenuse length result if they are equal then it is a rectangle
+		// We used to 2 different formulas (to find the length of diagonal length and hypotenuse length)
+		// We have to check all possible length and Diagonal of both non-right triangle diagonal and right triangle hypotenuse (diagonal) because user may enter points that are not neccessary valid to form 90 degree angle. Also this ensure that no lines will cross each other.
 		if (ABLength == CDLength && BCLength == DALength && ACNonRightDiagonal == ACRightDiagonal && CANonRightDiagonal == CARightDiagonal)
 		{
 			printf("\nIt is a Rectangle\n");
@@ -154,9 +163,35 @@ void RectangleSolver()
 			printf("It is not a Rectangle\n");
 	}
 	else
-		printf("You have entered repeated points\n");
-
-
+		printf("You have entered duplicated points\n");
 }
 
+// Find the Diagonal for all 4 points to determine its Length which return the result in double
+double FindDiagonalOfNonRightTriangle(POINT pointA, POINT pointB)
+{
+	double diagonalResult = (sqrt(pow(((double)pointB.x - (double)pointA.x), THEPOWOFTWO) + pow(((double)pointB.y - (double)pointA.y), THEPOWOFTWO)));
+	return diagonalResult;
+}
 
+// Calculate Hypotenuse of a Right Triangle if all 4 points form a rectangle since rectangle split in half will be a right triangle with a 90 degree angle and the function return the calculated result in double
+double FindHypotenuseOfRightTriangle(double lengthA, double lengthB)
+{
+	double hypotenuseResult = (sqrt(pow(((double)lengthA), (double)THEPOWOFTWO) + pow(((double)lengthB), (double)THEPOWOFTWO)));
+	return hypotenuseResult;
+}
+
+// Validate if x and y points between 2 points (point1 to 4) to determine if they have been entered which return true, else false
+bool ArePointsDuplicated(POINT point1, POINT point2, POINT point3, POINT point4)
+{
+	if (point1.x == point2.x && point1.y == point2.y ||
+		point1.x == point3.x && point1.y == point3.y ||
+		point1.x == point4.x && point1.y == point4.y ||
+		point2.x == point3.x && point2.y == point3.y ||
+		point2.x == point4.x && point2.y == point4.y ||
+		point3.x == point4.x && point3.y == point4.y)
+	{
+		return true;
+	}
+	else
+		return false;
+}
