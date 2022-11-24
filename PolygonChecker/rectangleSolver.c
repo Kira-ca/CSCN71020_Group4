@@ -1,7 +1,7 @@
 /* Polygon Checker Group Project - Group 4 */
 // CSCN71020-22F-Sec1 - Fall22 
 
-// rectangleCheck2.0 (2nd Approach)
+// Implementation of rectangleCheck2.0 (2nd Approach) Library
 /********************************************************************************************************************************************
 * Requirements: 
 	Add a new feature to the application program to accept four points. Each point is an x,y pair. You may ask the user to enter the x and y one at a time, or at once and split the input yourself. There should be some validation on the user input to ensure you are given proper values. Once given the four points, generate four lines and determine if these lines form a rectangle. You may find it useful to re-use your triangle angle code to assist this, but you may use a unique function to determine if the lines make a rectangle. Report the shape's perimeter, and if it is a rectangle also report its area.
@@ -14,6 +14,7 @@
 */
 
 #include "rectangleSolver.h"													// Header file for rectangleSolver Library
+#include "rectangleUserInput.h"													// Header file for rectangleUserInput Library
 #include <stdio.h>
 #include <stdbool.h>															// Use for boolean data type (true/false)
 #include <math.h>																// Use for sqrt() and pow() methods
@@ -24,25 +25,9 @@ POINT GetRectanglePoints()
 	int pointArrays[TWO];
 	char pointLetters[TWO] = { 'x', 'y' };
 
-	for (int i = 0; i < TWO; i++)
-	{
-		bool isValidEntry = true;
-		do
-		{
-			printf("%c: ", pointLetters[i]);
-
-			if (scanf_s("%d", &pointArrays[i]) == 0)
-			{
-				printf("Invalid Entry!\n");
-				while (getchar() != '\n');
-			}
-			else
-			{
-				isValidEntry = false;
-			}
-		} while (isValidEntry);
-	}
-
+	// This function get userInput in string, then validate if valid. If false, it will reprompt, else convert the userInput in string to numbers and store it in the pointArrays[]
+	GetUserInputPoints(&pointArrays);
+	
 	// Assign x and y of each point to the struct of POINT which return back the structure 
 	POINT assignedPoints = AssignPoints(pointArrays[ZERO], pointArrays[ONE]);
 	return assignedPoints;
@@ -94,6 +79,8 @@ void FixPointOrder(POINT* array)
 // A function that host all the functions for finding rectangle from 4 points
 void RectangleSolver()
 {
+	bool isValidRectangle = false;
+
 	printf("Please enter 1st point x & y: \n");
 	POINT point1 = GetRectanglePoints();
 
@@ -152,12 +139,19 @@ void RectangleSolver()
 		// We have to check all possible length and Diagonal of both non-right triangle diagonal and right triangle hypotenuse (diagonal) because user may enter points that are not neccessary valid to form 90 degree angle. Also this ensure that no lines will cross each other.
 		if (ABLength == CDLength && BCLength == DALength && ACNonRightDiagonal == ACRightDiagonal && CANonRightDiagonal == CARightDiagonal)
 		{
+			// Calculate The Area of a Rectangle
+			FindArea(ABLength, BCLength, CDLength, DALength);
+
+			// Calculate The Perimeter of a Rectangle
+			FindPerimeter(ABLength, BCLength, CDLength, DALength);
+
 			printf("\nIt is a Rectangle\n");
 			printf("\n*************\n");
 			printf("*           *\n");
 			printf("*           *\n");
 			printf("*           *\n");
 			printf("*************\n");
+
 		}
 		else
 			printf("It is not a Rectangle\n");
@@ -194,4 +188,43 @@ bool ArePointsDuplicated(POINT point1, POINT point2, POINT point3, POINT point4)
 	}
 	else
 		return false;
+}
+
+// Calculate for Area of Rectangle
+void FindArea(double ABLength, double BCLength, double CDLength, double DALength)
+{
+	double Area1 = 0;
+	double Area2 = 0;
+
+	// A formula to solve for Area of a Rectangle
+	Area1 = ABLength * BCLength;
+	Area2 = CDLength * DALength;
+
+	// Validate length of 2 different side to ensure that they are equal
+	if (Area1 == Area2)
+	{
+		printf("Area: %.3lf\n", Area1);
+	}
+	else
+		printf("Invalid Area\n");
+}
+
+// Calculate for Perimeter of Rectangle
+void FindPerimeter(double ABLength, double BCLength, double CDLength, double DALength)
+{
+	double Perimeter1 = 0;		
+	double Perimeter2 = 0;
+
+	// A formula to solve for Perimeter of a Rectangle
+	Perimeter1 = 2 * (ABLength + BCLength);
+	Perimeter2 = 2 * (CDLength + DALength);
+
+	// Validate length of 2 different side to ensure that they are equal
+	if (Perimeter1 == Perimeter2)
+	{
+		printf("Perimeter: %.3lf\n", Perimeter1);
+	}
+	else
+		printf("Invalid Perimeter\n");
+
 }

@@ -140,12 +140,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.c" />
+    <ClCompile Include="rectangleInputValidation.c" />
     <ClCompile Include="rectangleSolver.c" />
+    <ClCompile Include="rectangleUserInput.c" />
     <ClCompile Include="triangleSolver.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h" />
+    <ClInclude Include="rectangleInputValidation.h" />
     <ClInclude Include="rectangleSolver.h" />
+    <ClInclude Include="rectangleUserInput.h" />
     <ClInclude Include="triangleSolver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

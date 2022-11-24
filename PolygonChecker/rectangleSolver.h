@@ -30,3 +30,7 @@ double FindDiagonalOfNonRightTriangle(POINT, POINT);								// A function protot
 double FindHypotenuseOfRightTriangle(double, double);								// A function prototype for FindHypotenusOfRightTriangle
 
 bool ArePointsDuplicated(POINT point1, POINT point2, POINT point3, POINT point4);	// A function prototype for ArePointsDuplicated
+
+void FindArea(ABLength, BCLength, CDLength, DALength);
+
+void FindPerimeter(ABLength, BCLength, CDLength, DALength);
