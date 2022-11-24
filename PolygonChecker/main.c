@@ -3,6 +3,8 @@
 
 #include "main.h"
 #include "triangleSolver.h"
+#include "rectangleSolver.h"
+
 
 int side = 0;
 
@@ -22,10 +24,11 @@ int main() {
 			//printf_s("! %d\n", triangleSidesPtr[0]);
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf_s("%s\n", result);
-
-			//use this function after checking triangle validity!!
-			FindAnglesInTriangleAndPrint((double)triangleSidesPtr[0], (double)triangleSidesPtr[1], (double)triangleSidesPtr[2]);
-
+			break;
+		case 2:
+			// Function for rectangle
+			printf_s("Rectangle selected.\n");
+			RectangleSolver();
 			break;
 		case 0:
 			continueProgram = false;
@@ -48,6 +51,7 @@ void printWelcome() {
 
 int printShapeMenu() {
 	printf_s("1. Triangle\n");
+	printf_s("2. Rectangle\n");
 	printf_s("0. Exit\n");
 
 	int shapeChoice;
