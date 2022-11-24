@@ -1,7 +1,8 @@
 #pragma once
 
 #include <stdio.h>
-#define TWO 2
+#define TWO			2
+#define MAX_POINTS	4
 
 typedef struct point
 {

@@ -45,13 +45,16 @@ POINT AssignPoints(int x, int y)
 // Owen Implemented FixPointOrder Function
 void FixPointOrder(POINT* array)
 {
+	//declraing temp variables to swap values of points
 	int tempx;
 	int tempy;
 
+	//looping through check 4 times to fully organize points
 	for (int i = 0; i < 3; i++)
 	{
 		for (int i = 0; i < 3; i++)
 		{
+			//swapping point order to the points with the lowest values first
 			if (array[i + 1].x <= array[i].x && array[i + 1].y <= array[i].y)
 			{
 				tempx = array[i].x;
@@ -63,12 +66,13 @@ void FixPointOrder(POINT* array)
 			}
 		}
 	}
-	tempx = array[2].x;
-	tempy = array[2].y;
-	array[2].x = array[3].x;
-	array[2].y = array[3].y;
-	array[3].x = tempx;
-	array[3].y = tempy;
+	//swapping the last 2 points in arrayOfPoints to make the points go in order of drawing the ractangle
+	tempx = array[MAX_POINTS-2].x;
+	tempy = array[MAX_POINTS-2].y;
+	array[MAX_POINTS-2].x = array[MAX_POINTS-1].x;
+	array[MAX_POINTS-2].y = array[MAX_POINTS-1].y;
+	array[MAX_POINTS-1].x = tempx;
+	array[MAX_POINTS-1].y = tempy;
 }
 
 void RectangleSolver()
@@ -86,11 +90,14 @@ void RectangleSolver()
 	POINT point4 = GetRectanglePoints();
 
 	// sort x & y so that user Input order does not matter and still form a rectangle if it is true
+	
+	// Owen Implemented line 91 to 104
 
-	// Owen Implemented line 91 to 97
-	POINT arrayOfPoints[4] = { point1, point2, point3, point4 };
+	//creating an array of the points for easier checks
+	POINT arrayOfPoints[MAX_POINTS] = { point1, point2, point3, point4 };
 	FixPointOrder(arrayOfPoints);
 
+	//setting actual point variables to new order for program use
 	point1 = arrayOfPoints[0];
 	point2 = arrayOfPoints[1];
 	point3 = arrayOfPoints[2];
