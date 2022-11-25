@@ -146,6 +146,7 @@
     <ClCompile Include="triangleSolver.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="global.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="rectangleInputValidation.h" />
     <ClInclude Include="rectangleSolver.h" />

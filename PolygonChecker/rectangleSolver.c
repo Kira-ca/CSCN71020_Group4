@@ -13,6 +13,7 @@
 //********************************************************************************************************************************************
 */
 
+#include "global.h"																// Header file for global Library
 #include "rectangleSolver.h"													// Header file for rectangleSolver Library
 #include "rectangleUserInput.h"													// Header file for rectangleUserInput Library
 #include <stdio.h>
@@ -22,11 +23,11 @@
 // A function that get points from userInput and return point of struct (x,y)
 POINT GetRectanglePoints()
 {
-	int pointArrays[TWO];
+	int pointArrays[TWO] = {0, 0};
 	char pointLetters[TWO] = { 'x', 'y' };
 
 	// This function get userInput in string, then validate if valid. If false, it will reprompt, else convert the userInput in string to numbers and store it in the pointArrays[]
-	GetUserInputPoints(&pointArrays);
+	GetUserInputPoints(pointArrays);
 	
 	// Assign x and y of each point to the struct of POINT which return back the structure 
 	POINT assignedPoints = AssignPoints(pointArrays[ZERO], pointArrays[ONE]);
@@ -93,7 +94,7 @@ void RectangleSolver()
 	printf("Please enter 4th point x & y: \n");
 	POINT point4 = GetRectanglePoints();
 
-	// Owen Covach wrote line 111 to 121
+	// Owen Covach wrote line 100 to 109
 	
 	// sort x & y so that user Input order does not matter and still form a rectangle if it is true
 	
@@ -140,18 +141,30 @@ void RectangleSolver()
 		if (ABLength == CDLength && BCLength == DALength && ACNonRightDiagonal == ACRightDiagonal && CANonRightDiagonal == CARightDiagonal)
 		{
 			// Calculate The Area of a Rectangle
-			FindArea(ABLength, BCLength, CDLength, DALength);
+			double Area = FindArea(ABLength, BCLength, CDLength, DALength);
 
 			// Calculate The Perimeter of a Rectangle
-			FindPerimeter(ABLength, BCLength, CDLength, DALength);
+			double Perimeter = FindPerimeter(ABLength, BCLength, CDLength, DALength);
 
-			printf("\nIt is a Rectangle\n");
-			printf("\n*************\n");
+			printf("\n");
+			printf("It is a Rectangle\n\n");
+			printf("*************\n");
 			printf("*           *\n");
 			printf("*           *\n");
 			printf("*           *\n");
 			printf("*************\n");
 
+			// Print Area of the Rectangle
+			if (Area != INVALIDRETURNDOUBLE)
+				printf("Area: %.3lf\n", Area);
+			else
+				printf("Cannot Calculate Perimeter\n");
+
+			// Print Perimeter of the Rectangle
+			if (Perimeter != INVALIDRETURNDOUBLE)
+				printf("Perimeter: %.3lf\n", Perimeter);
+			else
+				printf("Cannot Calculate Perimeter\n");
 		}
 		else
 			printf("It is not a Rectangle\n");
@@ -191,7 +204,7 @@ bool ArePointsDuplicated(POINT point1, POINT point2, POINT point3, POINT point4)
 }
 
 // Calculate for Area of Rectangle
-void FindArea(double ABLength, double BCLength, double CDLength, double DALength)
+double FindArea(double ABLength, double BCLength, double CDLength, double DALength)
 {
 	double Area1 = 0;
 	double Area2 = 0;
@@ -203,28 +216,30 @@ void FindArea(double ABLength, double BCLength, double CDLength, double DALength
 	// Validate length of 2 different side to ensure that they are equal
 	if (Area1 == Area2)
 	{
-		printf("Area: %.3lf\n", Area1);
+		return Area1;
 	}
 	else
-		printf("Invalid Area\n");
+	{
+		return INVALIDRETURNDOUBLE;
+	}
 }
 
 // Calculate for Perimeter of Rectangle
-void FindPerimeter(double ABLength, double BCLength, double CDLength, double DALength)
+double FindPerimeter(double ABLength, double BCLength, double CDLength, double DALength)
 {
 	double Perimeter1 = 0;		
 	double Perimeter2 = 0;
 
 	// A formula to solve for Perimeter of a Rectangle
-	Perimeter1 = 2 * (ABLength + BCLength);
-	Perimeter2 = 2 * (CDLength + DALength);
+	Perimeter1 = TWO * (ABLength + BCLength);
+	Perimeter2 = TWO * (CDLength + DALength);
 
 	// Validate length of 2 different side to ensure that they are equal
 	if (Perimeter1 == Perimeter2)
 	{
-		printf("Perimeter: %.3lf\n", Perimeter1);
+		return Perimeter1;
 	}
 	else
-		printf("Invalid Perimeter\n");
+		return INVALIDRETURNDOUBLE;
 
 }

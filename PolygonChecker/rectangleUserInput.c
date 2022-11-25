@@ -3,6 +3,7 @@
 
 // Implementation of rectangleUserInput Library for rectangleCheck 2.0 (2nd Approach)
 
+#include "global.h"															// Header file for global Library
 #include "rectangleUserInput.h"												// Header file for rectangleUserInput Library				
 #include "rectangleInputValidation.h"										// Header file for rectangleInputValidation Library
 

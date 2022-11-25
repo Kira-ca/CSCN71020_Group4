@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#include "main.h"
-#include "triangleSolver.h"
-#include "rectangleSolver.h"
+#include "main.h"															// Header file for main Library
+#include "triangleSolver.h"													// Header file for triangleSolver Library
+#include "rectangleSolver.h"												// Header file for rectangleSolver Library
 
 
 int side = 0;

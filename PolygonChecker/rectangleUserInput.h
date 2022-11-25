@@ -1,13 +1,14 @@
 #pragma once
 
+/* Polygon Checker Group Project - Group 4 */
+// CSCN71020-22F-Sec1 - Fall22 
+
+// Header file rectangleUserInput Library for rectangleCheck 2.0 (2nd Approach)
+
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
 
-#define ZERO		0
-#define ONE			1
-#define TWO			2
-#define MAXSTRLEN 100
 
-void GetUserInputPoints(int* pointArrays);
+void GetUserInputPoints(int*);									// A function prototype for GetUserInputPoints
