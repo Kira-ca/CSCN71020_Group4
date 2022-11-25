@@ -24,7 +24,8 @@ int main() {
 			printf_s("%s\n", result);
 
 			//use this function after checking triangle validity!!
-			FindAnglesInTriangleAndPrint((double)triangleSidesPtr[0], (double)triangleSidesPtr[1], (double)triangleSidesPtr[2]);
+			double* n = FindAnglesInTriangleAndPrint((double)triangleSidesPtr[0], (double)triangleSidesPtr[1], (double)triangleSidesPtr[2]);
+			
 
 			break;
 		case 0:
