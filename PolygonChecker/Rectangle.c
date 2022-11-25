@@ -63,7 +63,20 @@ void PointsToRectangle(int* arrayOfX, int* arrayOfY) {			// PointsToRectangle fu
 		j++;							// incrementing j
 	}
 
-	if (length1 == length3 && length2 == length4) {				// Here the concept is used that the opposite sides of a rectangle are equal
+	// diagonal length check:
+	double diagonalUsingPoints;						// this diagonal will store the length of diagonal found using corresponding points
+	x1 = arrayOfX[0];								// taking coordinates of 1st point
+	y1 = arrayOfY[0];
+
+	x2 = arrayOfX[2];								// taking coordinates of 2nd point
+	y2 = arrayOfY[2];
+
+	diagonalUsingPoints = sqrt((double)((x1 - x2) * (x1 - x2) + (y2 - y1) * (y2 - y1)));		// finding the length b/w 2 points using the formula sqrt((x2 - x1)^2 + (y2 - y1)^2)
+
+	double diagonalUsingPythagoras;
+	diagonalUsingPythagoras = sqrt((double)((length1 * length1) + (length2 * length2)));
+
+	if (length1 == length3 && length2 == length4 && diagonalUsingPoints == diagonalUsingPythagoras) {				// Here the concept is used that the opposite sides of a rectangle are equal
 
 		isARectangle = true;									// isARectangle is set to true
 	}

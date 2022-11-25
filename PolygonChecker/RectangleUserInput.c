@@ -16,8 +16,13 @@ bool FourPoints(int* arrayOfX, int* arrayOfY) {			// FourPoints function is crea
 
 	for (int i = 0; i < NUMBEROFPOINTS && isInputValid; i++) {			// if i is less than NUMBEROFPOINTS and input is valid then this loop keeps executing
 
-		printf("Please enter point(x and y separated by space): ");		// instructs user on how to enter coordinates
-		scanf("%s %s", x, y);											// takes user input and stores it in variable x and y
+		printf("Please enter x coordinate of %d point: ", i + 1);		// instructs user to enter x coordinate of i + 1 point
+		scanf("%s", x);											// takes user input and stores it in variable x
+
+		printf("Please enter y coordinate of %d point: ", i + 1);		// instructs user to enter y coordinate of i + 1 point
+		scanf("%s", y);											// takes user input and stores it in variable y
+
+		printf("\n");
 
 		isInputValid = RectangleInputValidation(x, y);					// calling RectangleInputValidation that takes 2 string arguments (which are 2 user inputs) and returns a bool value. The returned value is assigned to isInputValid variable.
 
