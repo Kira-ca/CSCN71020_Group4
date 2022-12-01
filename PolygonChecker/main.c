@@ -40,7 +40,7 @@ int main() {
 
 			if (validInput) {											// if the user input is valid this if block gets executed
 
-				PointsToRectangle(arrayOfX, arrayOfY);			// calling PointsToRectangle function and two integer arrays are passed as arguments
+				isARectangle = PointsToRectangle(arrayOfX, arrayOfY);			// calling PointsToRectangle function and two integer arrays are passed as arguments
 			}
 			
 			break;											// to break out of switch

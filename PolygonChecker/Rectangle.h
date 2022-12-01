@@ -5,6 +5,6 @@
 #define NUMBEROFPOINTS 4					// this constant signifies NUMBEROFPOINTS
 #define MAXSIZE 50							// this constant signifies MAXSIZE
 
-void PointsToRectangle(int*, int*);			// function declaration for PointsToRectangle
-void Perimeter(double*, bool);				// function declaration for Perimeter
-void Area(double*, bool);					// function declaration for Area
+bool PointsToRectangle(int*, int*);			// function declaration for PointsToRectangle
+double Perimeter(double*);					// function declaration for Perimeter
+double Area(double*, bool);					// function declaration for Area

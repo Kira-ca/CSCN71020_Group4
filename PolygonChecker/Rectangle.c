@@ -4,7 +4,7 @@
 #include <stdbool.h>											// allows us to use bool datatype
 #include <math.h>												// allows us to use sqrt type math functions
 
-void PointsToRectangle(int* arrayOfX, int* arrayOfY) {			// PointsToRectangle function is created that takes two arguments, both are a pointer of type int named arrayOfX and arrayOfY. It returns nothing.
+bool PointsToRectangle(int* arrayOfX, int* arrayOfY) {			// PointsToRectangle function is created that takes two arguments, both are a pointer of type int named arrayOfX and arrayOfY. It returns nothing.
 
 	bool isARectangle = false;									// this variable will be used to check if the user inputted points form a rectangle or not
 
@@ -71,29 +71,22 @@ void PointsToRectangle(int* arrayOfX, int* arrayOfY) {			// PointsToRectangle fu
 	x2 = arrayOfX[2];								// taking coordinates of 2nd point
 	y2 = arrayOfY[2];
 
+	// length of diagonal using the 2 points
+
 	diagonalUsingPoints = sqrt((double)((x1 - x2) * (x1 - x2) + (y2 - y1) * (y2 - y1)));		// finding the length b/w 2 points using the formula sqrt((x2 - x1)^2 + (y2 - y1)^2)
 
-	double diagonalUsingPythagoras;
-	diagonalUsingPythagoras = sqrt((double)((length1 * length1) + (length2 * length2)));
+	// length of diagonal assuming the diagonal forms a right angled triangle (so by using pythagoras theorem)
 
-	if (length1 == length3 && length2 == length4 && diagonalUsingPoints == diagonalUsingPythagoras) {				// Here the concept is used that the opposite sides of a rectangle are equal
+	double diagonalUsingPythagoras;	
+	diagonalUsingPythagoras = sqrt((double)((length1 * length1) + (length2 * length2)));		// here finding the length of diagonal using pythagoras theorem.
+
+	if (length1 == length3 && length2 == length4 && diagonalUsingPoints == diagonalUsingPythagoras) {				// Here the concept is used that the opposite sides of a rectangle are equal and the length of diagonals obtained from points and from pythagoras should be same
 
 		isARectangle = true;									// isARectangle is set to true
 	}
 
-	Perimeter(arrayOfLengths, isARectangle);					// calling Perimeter function that takes two arguments, one double array of length and another a bool named isARectangle.
-	Area(arrayOfLengths, isARectangle);							// calling Area function that takes two arguments, one double array of length and another a bool named isARectangle.
-}
-
-void Perimeter(double* arrayOfLengths, bool isARectangle) {			// Perimeter function is created that takes two arguments, one is a pointer of type double named arrayOfLengths and the other is a bool variable named isARectangle. It returns nothing.
-
-	double perimeter = 0;							// a perimeter variable of type double is initialised									
-
-	for (int i = 0; i < NUMBEROFPOINTS; i++) {		// if i is less than NUMBEROFPOINTS then this loop continues executing
-
-		perimeter += arrayOfLengths[i];				// all the lengths are added one by one to perimeter variable
-	}
-
+	double perimeter = Perimeter(arrayOfLengths, isARectangle);					// calling Perimeter function that takes two arguments, one double array of length and another a bool named isARectangle.
+																				// the return value is stored in variable named perimeter
 	if (isARectangle) {								// if isARectangle is true then this block gets executed
 
 		printf("\nIt is a Rectangle:\n\n");									// this statement informs user that the points do form a Rectangle
@@ -104,11 +97,27 @@ void Perimeter(double* arrayOfLengths, bool isARectangle) {			// Perimeter funct
 		printf("\nIt is not a Rectangle: \n\n");								// this informs user that the points do not form a rectangle
 		printf("The Perimeter of the figure is: %.2lf\n\n", perimeter);			// the perimeter of the figure is printed
 	}
+	
+	double area = Area(arrayOfLengths, isARectangle);							// calling Area function that takes two arguments, one double array of length and another a bool named isARectangle.
+																				// the return value is stored in variable named area.
+	return isARectangle;								// returning a bool value
 }
 
-void Area(double* arrayOfLengths, bool isARectangle) {			// Area function is created that takes two arguments, one is a pointer of type double named arrayOfLengths and the other is a bool variable named isARectangle. It returns nothing.
+double Perimeter(double* arrayOfLengths) {			// Perimeter function is created that takes an argument, a pointer of type double named arrayOfLengths. It returns a double value.
 
-	double area;						// variable double is declared
+	double perimeter = 0;							// a perimeter variable of type double is initialised									
+
+	for (int i = 0; i < NUMBEROFPOINTS; i++) {		// if i is less than NUMBEROFPOINTS then this loop continues executing
+
+		perimeter += arrayOfLengths[i];				// all the lengths are added one by one to perimeter variable
+	}
+
+	return perimeter;								// returning the value stored in perimeter
+}
+
+double Area(double* arrayOfLengths, bool isARectangle) {			// Area function is created that takes two arguments, one is a pointer of type double named arrayOfLengths and the other is a bool variable named isARectangle. It returns a double value.
+
+	double area = 0;						// variable double is initialised and has value 0
 
 	if (isARectangle) {											// if isARectangle is true i.e. it is a rectangle, then this if block gets executed
 
@@ -116,4 +125,6 @@ void Area(double* arrayOfLengths, bool isARectangle) {			// Area function is cre
 
 		printf("The area of the Rectangle is: %.2lf\n\n", area);			// the area of the Rectangle is printed
 	}
+
+	return area;										// returning the value stored in variable area, if it is not a rectangle then the value 0 is returned.
 }
