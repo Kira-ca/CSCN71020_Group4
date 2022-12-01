@@ -26,9 +26,9 @@ namespace PolygonCheckerTest
 		{
 			// This is testing the analyze Triangle function using 3 points
 			// Valid input should output Scalene triangle (with different sides)
-			// analyzeTriangle(20, 10, 10);
+			// analyzeTriangle(50, 73, 18);
 			char* result;
-			result = analyzeTriangle(20, 10, 13);
+			result = analyzeTriangle(50, 73, 18);
 			Assert::AreEqual("Scalene triangle", result);
 		}
 
@@ -36,23 +36,33 @@ namespace PolygonCheckerTest
 		{
 			// This is testing the analyze Triangle function using 3 points
 			// Valid input should output Isosceles triangle (atleast 2 sides of equal length)
-			// analyzeTriangle(20, 20, 13);
+			// analyzeTriangle(431, 431, 50);
 			char* result;
-			result = analyzeTriangle(20, 20, 13);
+			result = analyzeTriangle(431, 431, 50);
 			Assert::AreEqual("Isosceles triangle", result);
 		}
 
 		TEST_METHOD(TriangleTypeTest4)
 		{
 			// This is testing the analyze Triangle function using 3 points
+			// Valid input should output Scalene triangle and not an Isosceles traingle eventhough point 2 and 3 are equal since the order of the user input matters
+			// analyzeTriangle(312, 89, 289);
+			char* result;
+			result = analyzeTriangle(312, 89, 89);
+			Assert::AreNotEqual("Isosceles triangle", result);
+		}
+
+		TEST_METHOD(TriangleTypeTest5)
+		{
+			// This is testing the analyze Triangle function using 3 points
 			// Valid input should output Isosceles triangle (atleast 2 sides of equal length)
-			// analyzeTriangle(20, 12, 20);
+			// analyzeTriangle(0, 0, 0);
 			char* result;
 			result = analyzeTriangle(20, 12, 20);
 			Assert::AreEqual("Isosceles triangle", result);
 		}
 
-		TEST_METHOD(TriangleTypeTest5)
+		TEST_METHOD(TriangleTypeTest6)
 		{
 			// This is testing the analyze Triangle function using 3 points
 			// Invalid input (with zeros) should output Not a triangle 
@@ -62,7 +72,7 @@ namespace PolygonCheckerTest
 			Assert::AreEqual("Not a triangle", result);
 		}
 
-		TEST_METHOD(TriangleTypeTest6)
+		TEST_METHOD(TriangleTypeTest7)
 		{
 			// This is testing the analyze Triangle function using 3 points
 			// Invalid input (with negative number) should output Not a triangle
