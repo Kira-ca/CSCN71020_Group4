@@ -29,6 +29,6 @@ double FindHypotenuseOfRightTriangle(double, double);								// A function proto
 
 bool ArePointsDuplicated(POINT point1, POINT point2, POINT point3, POINT point4);	// A function prototype for ArePointsDuplicated
 
-double FindArea(ABLength, BCLength, CDLength, DALength);							// A function prototype for FindArea
+double FindArea(double, double, double, double);							// A function prototype for FindArea
 
-double FindPerimeter(ABLength, BCLength, CDLength, DALength);						// A function prototype for FindPerimeter
+double FindPerimeter(double, double, double, double);						// A function prototype for FindPerimeter
