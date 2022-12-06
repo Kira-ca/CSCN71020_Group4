@@ -1,4 +1,4 @@
-#include "RectangleInputValidation.h"								// Header file for RectangleInputValidation library
+#include "RectangleInputCheck.h"								// Header file for RectangleInputValidation library
 #include <stdbool.h>												// allows us to use bool datatype
 #include <string.h>													// allows us to use strlen function
 
