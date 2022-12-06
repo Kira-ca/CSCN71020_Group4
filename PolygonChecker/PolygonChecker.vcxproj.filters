@@ -30,12 +30,6 @@
     <ClCompile Include="rectangleUserInput.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RectangleUserInput.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RectangleInputValidation.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
 
   </ItemGroup>
   <ItemGroup>
@@ -52,12 +46,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="rectangleUserInput.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RectangleUserInput.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RectangleInputValidation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="global.h">
