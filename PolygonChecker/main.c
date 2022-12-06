@@ -2,13 +2,17 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#include "main.h"
-#include "triangleSolver.h"
+
+#include "main.h"															// Header file for main Library
+#include "triangleSolver.h"													// Header file for triangleSolver Library
+#include "rectangleSolver.h"												// Header file for rectangleSolver Library
 #include "../PolygonChecker/RectangleUserInput.h"			// linking header file for RectangleUserInput
 #include "../PolygonChecker/Rectangle.h"					// linking header file for Rectangle
 
 #define SIZE 20						// this constant signifies SIZE
-#define ZERO 0
+#define ZERO 0            // this constant signifies ZERO
+#define ONE 1             // this constant signifies ONE
+
 
 int side = 0;
 
@@ -36,15 +40,20 @@ int main() {
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
 			//printf_s("! %d\n", triangleSidesPtr[0]);
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+      
+      //use this function after checking triangle validity!!
+			double* n = FindAnglesInTriangleAndPrint((double)triangleSidesPtr[0], (double)triangleSidesPtr[1], (double)triangleSidesPtr[2]);
+      
 			printf_s("%s\n", result);
 			break;
 
+
 		case 2:
 
-			printf("Enter 0 for first Approach, 1 for Second Approach: \n");
-			scanf("%d", &askFurtherInput);
+			printf("Enter 0 for first Approach, 1 for Second Approach: \n");        // this asks user which approach they want
+			scanf("%d", &askFurtherInput);                                          // this takes the user input and stores in the variable askFurtherInput
 
-			if (askFurtherInput == ZERO) {
+			if (askFurtherInput == ZERO) {                                          // if user inputted value is equal to the value stored in constant ZERO, then this if block gets executed
 
 				validInput = FourPoints(arrayOfX, arrayOfY);					// FourPoints function is called and two integer arrays are passed as arguments, the returned bool value is stored in validInput variable
 
@@ -53,13 +62,18 @@ int main() {
 					isARectangle = PointsToRectangle(arrayOfX, arrayOfY);			// calling PointsToRectangle function and two integer arrays are passed as arguments
 				}
 
-				break;											// to break out of switch
 			}
-			else {
+			else if (askFurtherInput == ONE) {                       // if user inputted value is equal to the value stored in constant ONE, then this if block gets executed                                
 
-				break;
+				// Function for rectangle
+			printf_s("Rectangle selected.\n");
+			RectangleSolver();
+      
+
 			}
-
+      
+      break;											// to break out of switch
+      
 		case 0:
 			continueProgram = false;
 			break;
@@ -82,7 +96,9 @@ void printWelcome() {
 
 int printShapeMenu() {
 	printf_s("1. Triangle\n");
+
 	printf("2. Rectangle\n");				// option 2 for Rectangle
+
 	printf_s("0. Exit\n");
 
 	int shapeChoice;

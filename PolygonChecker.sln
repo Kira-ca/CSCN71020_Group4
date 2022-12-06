@@ -1,12 +1,29 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.4.33103.184
+
+
+VisualStudioVersion = 17.2.32630.192
+
+
 MinimumVisualStudioVersion = 10.0.40219.1
+
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PolygonChecker", "PolygonChecker\PolygonChecker.vcxproj", "{2328FAE1-A1BF-420F-9F0C-C7CCC7F13314}"
 EndProject
+
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RectangleChecker_Test", "RectangleChecker_Test\RectangleChecker_Test.vcxproj", "{8CFF8909-2716-4C17-9DF0-87359553C844}"
 EndProject
+
+
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PolygonChecker_Test", "PolygonChecker_Test\PolygonChecker_Test.vcxproj", "{3924FE19-4931-415F-B4C1-9B7A39BBA653}"
+EndProject
+
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RectangleTests", "RectangleTests\RectangleTests.vcxproj", "{7F26B761-D1BA-413D-B492-BB97B886027E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest1", "UnitTest1\UnitTest1.vcxproj", "{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
+EndProject
+
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -23,6 +40,7 @@ Global
 		{2328FAE1-A1BF-420F-9F0C-C7CCC7F13314}.Release|x64.Build.0 = Release|x64
 		{2328FAE1-A1BF-420F-9F0C-C7CCC7F13314}.Release|x86.ActiveCfg = Release|Win32
 		{2328FAE1-A1BF-420F-9F0C-C7CCC7F13314}.Release|x86.Build.0 = Release|Win32
+
 		{8CFF8909-2716-4C17-9DF0-87359553C844}.Debug|x64.ActiveCfg = Debug|x64
 		{8CFF8909-2716-4C17-9DF0-87359553C844}.Debug|x64.Build.0 = Debug|x64
 		{8CFF8909-2716-4C17-9DF0-87359553C844}.Debug|x86.ActiveCfg = Debug|Win32
@@ -31,6 +49,37 @@ Global
 		{8CFF8909-2716-4C17-9DF0-87359553C844}.Release|x64.Build.0 = Release|x64
 		{8CFF8909-2716-4C17-9DF0-87359553C844}.Release|x86.ActiveCfg = Release|Win32
 		{8CFF8909-2716-4C17-9DF0-87359553C844}.Release|x86.Build.0 = Release|Win32
+
+
+		{3924FE19-4931-415F-B4C1-9B7A39BBA653}.Debug|x64.ActiveCfg = Debug|x64
+		{3924FE19-4931-415F-B4C1-9B7A39BBA653}.Debug|x64.Build.0 = Debug|x64
+		{3924FE19-4931-415F-B4C1-9B7A39BBA653}.Debug|x86.ActiveCfg = Debug|Win32
+		{3924FE19-4931-415F-B4C1-9B7A39BBA653}.Debug|x86.Build.0 = Debug|Win32
+		{3924FE19-4931-415F-B4C1-9B7A39BBA653}.Release|x64.ActiveCfg = Release|x64
+		{3924FE19-4931-415F-B4C1-9B7A39BBA653}.Release|x64.Build.0 = Release|x64
+		{3924FE19-4931-415F-B4C1-9B7A39BBA653}.Release|x86.ActiveCfg = Release|Win32
+		{3924FE19-4931-415F-B4C1-9B7A39BBA653}.Release|x86.Build.0 = Release|Win32
+
+   
+		{7F26B761-D1BA-413D-B492-BB97B886027E}.Debug|x64.ActiveCfg = Debug|x64
+		{7F26B761-D1BA-413D-B492-BB97B886027E}.Debug|x64.Build.0 = Debug|x64
+		{7F26B761-D1BA-413D-B492-BB97B886027E}.Debug|x86.ActiveCfg = Debug|Win32
+		{7F26B761-D1BA-413D-B492-BB97B886027E}.Debug|x86.Build.0 = Debug|Win32
+		{7F26B761-D1BA-413D-B492-BB97B886027E}.Release|x64.ActiveCfg = Release|x64
+		{7F26B761-D1BA-413D-B492-BB97B886027E}.Release|x64.Build.0 = Release|x64
+		{7F26B761-D1BA-413D-B492-BB97B886027E}.Release|x86.ActiveCfg = Release|Win32
+		{7F26B761-D1BA-413D-B492-BB97B886027E}.Release|x86.Build.0 = Release|Win32
+
+		{4FC737F1-C7A5-4376-A066-2A32D752A2FF}.Debug|x64.ActiveCfg = Debug|x64
+		{4FC737F1-C7A5-4376-A066-2A32D752A2FF}.Debug|x64.Build.0 = Debug|x64
+		{4FC737F1-C7A5-4376-A066-2A32D752A2FF}.Debug|x86.ActiveCfg = Debug|Win32
+		{4FC737F1-C7A5-4376-A066-2A32D752A2FF}.Debug|x86.Build.0 = Debug|Win32
+		{4FC737F1-C7A5-4376-A066-2A32D752A2FF}.Release|x64.ActiveCfg = Release|x64
+		{4FC737F1-C7A5-4376-A066-2A32D752A2FF}.Release|x64.Build.0 = Release|x64
+		{4FC737F1-C7A5-4376-A066-2A32D752A2FF}.Release|x86.ActiveCfg = Release|Win32
+		{4FC737F1-C7A5-4376-A066-2A32D752A2FF}.Release|x86.Build.0 = Release|Win32
+		
+
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
