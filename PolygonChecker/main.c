@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdbool.h>
 
@@ -7,6 +8,7 @@
 #include "../PolygonChecker/Rectangle.h"					// linking header file for Rectangle
 
 #define SIZE 20						// this constant signifies SIZE
+#define ZERO 0
 
 int side = 0;
 
@@ -17,6 +19,9 @@ int main() {
 	bool isARectangle;						// this variable will tell us if the points given by the user form a rectangle or not
 
 	bool continueProgram = true;
+
+	int askFurtherInput = -1;
+
 	while (continueProgram) {
 		printWelcome();
 
@@ -36,14 +41,24 @@ int main() {
 
 		case 2:
 
-			validInput = FourPoints(arrayOfX, arrayOfY);					// FourPoints function is called and two integer arrays are passed as arguments, the returned bool value is stored in validInput variable
+			printf("Enter 0 for first Approach, 1 for Second Approach: \n");
+			scanf("%d", &askFurtherInput);
 
-			if (validInput) {											// if the user input is valid this if block gets executed
+			if (askFurtherInput == ZERO) {
 
-				isARectangle = PointsToRectangle(arrayOfX, arrayOfY);			// calling PointsToRectangle function and two integer arrays are passed as arguments
+				validInput = FourPoints(arrayOfX, arrayOfY);					// FourPoints function is called and two integer arrays are passed as arguments, the returned bool value is stored in validInput variable
+
+				if (validInput) {											// if the user input is valid this if block gets executed
+
+					isARectangle = PointsToRectangle(arrayOfX, arrayOfY);			// calling PointsToRectangle function and two integer arrays are passed as arguments
+				}
+
+				break;											// to break out of switch
 			}
-			
-			break;											// to break out of switch
+			else {
+
+				break;
+			}
 
 		case 0:
 			continueProgram = false;
