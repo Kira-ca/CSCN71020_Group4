@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="RectangleInputValidation.c" />
+    <ClCompile Include="RectangleInputCheck.c" />
     <ClCompile Include="main.c" />
 
     <ClCompile Include="Rectangle.c" />
@@ -149,11 +149,11 @@
     <ClCompile Include="rectangleUserInput.c" />
 
     <ClCompile Include="triangleSolver.c" />
-    <ClCompile Include="RectangleUserInput.c" />
+    <ClCompile Include="RectangleUserPrompt.c" />
   </ItemGroup>
   <ItemGroup>
 
-    <ClInclude Include="RectangleInputValidation.h" />
+    <ClInclude Include="RectangleInputCheck.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Rectangle.h" />
 
@@ -164,7 +164,7 @@
     <ClInclude Include="rectangleUserInput.h" />
 
     <ClInclude Include="triangleSolver.h" />
-    <ClInclude Include="RectangleUserInput.h" />
+    <ClInclude Include="RectangleUserPrompt.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
