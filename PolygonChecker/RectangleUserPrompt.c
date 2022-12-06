@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS					// allows us to ignore unsafe warnings
-#include "RectangleUserInput.h"					// linking header file for RectangleUserInput library
+#include "RectangleUserPrompt.h"					// linking header file for RectangleUserInput library
 #include <stdio.h>								// is a header file that contains information to include the input/output related functions in our program
 #include <stdbool.h>							// allows us to use bool datatype
 #include <stdlib.h>								// allows us to use atoi function
