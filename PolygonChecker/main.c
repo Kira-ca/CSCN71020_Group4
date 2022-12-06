@@ -23,12 +23,18 @@ int main() {
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
 			//printf_s("! %d\n", triangleSidesPtr[0]);
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+      
+      //use this function after checking triangle validity!!
+			double* n = FindAnglesInTriangleAndPrint((double)triangleSidesPtr[0], (double)triangleSidesPtr[1], (double)triangleSidesPtr[2]);
+      
 			printf_s("%s\n", result);
 			break;
 		case 2:
 			// Function for rectangle
 			printf_s("Rectangle selected.\n");
 			RectangleSolver();
+			
+			
 			break;
 		case 0:
 			continueProgram = false;
