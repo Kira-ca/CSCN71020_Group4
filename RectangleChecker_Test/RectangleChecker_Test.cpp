@@ -87,6 +87,8 @@ namespace RectangleCheckerTest
 			int arrayOfY[5] = { 2,2,-3,-3 };
 
 			bool isARectangle = PointsToRectangle(arrayOfX, arrayOfY);
+			
+			Assert::AreEqual(true, isARectangle);
 		}
 	};
 
