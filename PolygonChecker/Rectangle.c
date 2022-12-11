@@ -85,7 +85,7 @@ bool PointsToRectangle(int* arrayOfX, int* arrayOfY) {			// PointsToRectangle fu
 		isARectangle = true;									// isARectangle is set to true
 	}
 
-	double perimeter = Perimeter(arrayOfLengths, isARectangle);					// calling Perimeter function that takes two arguments, one double array of length and another a bool named isARectangle.
+	double perimeter = Perimeter(arrayOfLengths);					// calling Perimeter function that takes two arguments, one double array of length and another a bool named isARectangle.
 																				// the return value is stored in variable named perimeter
 	if (isARectangle) {								// if isARectangle is true then this block gets executed
 

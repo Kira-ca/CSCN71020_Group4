@@ -6,7 +6,7 @@
 #include "main.h"															// Header file for main Library
 #include "triangleSolver.h"													// Header file for triangleSolver Library
 #include "rectangleSolver.h"												// Header file for rectangleSolver Library
-#include "../PolygonChecker/RectangleUserInput.h"			// linking header file for RectangleUserInput
+#include "../PolygonChecker/RectangleUserPrompt.h"			// linking header file for RectangleUserPrompt
 #include "../PolygonChecker/Rectangle.h"					// linking header file for Rectangle
 
 #define SIZE 20						// this constant signifies SIZE

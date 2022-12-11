@@ -8,7 +8,10 @@
 bool FourPoints(int* arrayOfX, int* arrayOfY) {			// FourPoints function is created that takes two arguments, both are a pointer of type int named arrayOfX and arrayOfY. It returns bool value.
 
 	char x[SIZE];										// two strings named are declared
-	char y[SIZE];										
+	x[SIZE - 1] = NULLCHARACTER;
+
+	char y[SIZE];
+	y[SIZE - 1] = NULLCHARACTER;
 
 	bool isInputValid = true;							// this variable will be used to tell if the input is valid or not
 
