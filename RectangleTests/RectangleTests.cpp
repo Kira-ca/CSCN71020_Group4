@@ -8,7 +8,6 @@ extern "C" struct POINT { int x, y; };
 extern "C" double FindArea(double, double, double, double);
 extern "C" double FindPerimeter(double, double, double, double);
 extern "C" void FixPointOrder(POINT*);
-extern "C" struct POINT { int x, y; };
 extern "C" POINT AssignPoints(int x, int y);
 extern "C" bool ArePointsDuplicated(POINT, POINT, POINT, POINT);
 extern "C" double FindDiagonalOfNonRightTriangle(POINT, POINT);
