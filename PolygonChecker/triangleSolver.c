@@ -6,7 +6,6 @@
 
 char* analyzeTriangle(int side1, int side2, int side3) {
 	char* result = "";
-		char* result = "";
 	/*According to the triangle inequality theorem, in order for three side lengths to form a triangle a + b > c or a + c > b or b + c > a,
 	so this is added as a refactor*/
 
@@ -46,7 +45,7 @@ double* FindAnglesInTriangleAndPrint(double side1, double side2, double side3)
 	angle[2] = DEGREETOTAL - angle[0] - angle[1]; // doing the easy way to find 3rd angle
 
 	//printing statement values
-	printf_s("The 3 angles A, B, C in respect to your inputs are: %.2lf, %.2lf, %.2lf", angle[0], angle[1], angle[2]);
+	printf_s("The 3 angles A, B, C in respect to your inputs are: %.2lf, %.2lf, %.2lf\n", angle[0], angle[1], angle[2]);
 
 	return angle;
 }
